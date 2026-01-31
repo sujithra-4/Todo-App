@@ -13,7 +13,7 @@ export default function Todo() {
 
 
 
-   const apiUrl ="https://todo-app-7acv.onrender.com";
+   const apiUrl =process.env.REACT_APP_API_URL;
 
 
     const handleSubmit = () => {
