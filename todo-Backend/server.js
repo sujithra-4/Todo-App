@@ -107,8 +107,8 @@ app.delete('/todos/:id',async(req,res)=>{
     
 
 //start the server
-const port = 8000;
+const PORT =process.env.PORT || 8000;
 
-app.listen(port,()=>{
-    console.log("server is running on port " + port);
+app.listen(PORT,()=>{
+    console.log("server is running on port " + PORT);
 })
