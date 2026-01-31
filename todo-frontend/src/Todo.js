@@ -49,17 +49,29 @@ export default function Todo() {
         }
     }
 
-    useEffect(() => {
-        getItems();
-    }, [])
+    // useEffect(() => {
+    //     getItems();
+    // }, [])
 
+    // const getItems = () => {
+    //     fetch (apiUrl + "/todos")
+    //     .then((res)=> res.json())
+    //     .then((res) => {
+    //         setTodos (res)
+    //     })
+    // }
+    useEffect(() => {
     const getItems = () => {
-        fetch (apiUrl + "/todos")
-        .then((res)=> res.json())
-        .then((res) => {
-            setTodos (res)
-        })
-    }
+        fetch(apiUrl + "/todos")
+            .then((res) => res.json())
+            .then((res) => {
+                setTodos(res);
+            });
+    };
+
+    getItems();
+}, []);
+
      
     const handleEdit = (item) => {
         setEditId(item._id);
