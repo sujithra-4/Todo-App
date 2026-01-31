@@ -2,6 +2,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require("dotenv").config();
+
 
 //create an instance of express
 const app = express();
@@ -12,13 +14,18 @@ app.use(cors());
 //let todos=[];
 //connecting mongodb
 
-mongoose.connect('mongodb://localhost:27017/mern-app')
-.then(()=>{
-    console.log("connected to mongodb")
-})
-.catch((err)=>{
-    console.log("error connecting to mongodb", err);
-})
+// mongoose.connect('mongodb://localhost:27017/mern-app')
+// .then(()=>{
+//     console.log("connected to mongodb")
+// })
+// .catch((err)=>{
+//     console.log("error connecting to mongodb", err);
+// })
+
+
+   mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.error(err));
 
 //creating schema
 const todoSchema = new mongoose.Schema({
@@ -111,4 +118,5 @@ const PORT =process.env.PORT || 8000;
 
 app.listen(PORT,()=>{
     console.log("server is running on port " + PORT);
+
 })
